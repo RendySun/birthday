@@ -70,7 +70,7 @@
           <img class="photo" id="photo" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=1600&auto=format&fit=crop" alt="Our Photo"/>
           <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
             <button class="btn" id="reveal">Open your letter 💌</button>
-            <button class="btn ghost" id="confetti">Celebrate 🎉</button>
+            <!-- <button class="btn ghost" id="confetti">Celebrate 🎉</button> -->
           </div>
         </div>
         <div>
@@ -183,7 +183,7 @@
     function rainHearts(n){ for(let i=0;i<n;i++) setTimeout(spawnHeart, i*60); }
 
     // Music helper
-    (function playMusic(){
+    function playMusic(){
       const audio = document.getElementById('music');
       if(CONFIG.musicUrl){ audio.src = CONFIG.musicUrl; audio.currentTime = 0; audio.volume = 0.8; audio.play().catch(()=>{}); }
       else { // fallback soft chime with WebAudio
@@ -201,12 +201,12 @@
           });
         }catch(e){}
       }
-    })();
+    }
 
     // Celebrate action: popup + music + visuals
     function celebrate(){
       modal.classList.add('show');
-      // playMusic();
+      playMusic();
       burst();
       rainHearts(28);
     }
